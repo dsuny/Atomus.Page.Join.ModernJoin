@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Atomus.Ads.Controls;assembly=Atomus.Core"
+             xmlns:local="clr-namespace:Atomus.Page.Join.ViewModel"
+             x:Class="Atomus.Page.Join.ModernJoin"
+             BackgroundColor="White"
+             >
+    
+    <!--<ContentPage.BindingContext>
+        <local:DefaultLoginViewModel />
+    </ContentPage.BindingContext>-->
+
+    <ContentPage>
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,5,0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <Label Text="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Red" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,0,0,0" />
+                    <Label Text="약관동의" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Red" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,0,0,0" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <Label Text="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_ModernJoin}" Margin="0,0,0,0" />
+                    <Label Text="정보입력" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_ModernJoin}" Margin="0,0,0,0" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="2">
+                    <Label Text="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_ModernJoin}" Margin="0,0,0,0" />
+                    <Label Text="이메일 인증" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_ModernJoin}" Margin="0,0,0,0" />
+                </StackLayout>
+            </Grid>
+
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Frame Grid.Column="0" Grid.ColumnSpan="3" Padding="0.1" BackgroundColor="Gray" Opacity="0.5"/>
+                <Label Grid.Column="0   " Text="●" TextColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,0,0,0" />
+            </Grid>
+
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0" Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding UserAgreementIsToggled}" IsEnabled="{Binding IsEnabledControl}" />
+                        <Label VerticalOptions="Center" Style="{DynamicResource Label_Black_ModernJoin}"
+                               Text="이용약관 동의"/>
+                    </StackLayout>
+
+                    <Frame Grid.Row="1" Margin="0,0,0,10" Padding="5" CornerRadius="5" BorderColor="LightGray">
+                        <ScrollView>
+                            <Label FontSize="Micro"
+                                   Text="{Binding UserAgreement}" IsEnabled="{Binding IsEnabledControl}"
+                                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                        </ScrollView>
+                    </Frame>
+
+                    <StackLayout Grid.Row="2" Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding PersonalInformationCollectionAgreementToggled}" IsEnabled="{Binding IsEnabledControl}" />
+                        <Label VerticalOptions="Center" Style="{DynamicResource Label_Black_ModernJoin}"
+                               Text="개인정보 수집 및 이용 동의"/>
+                    </StackLayout>
+
+                    <Frame Grid.Row="3" Margin="0" Padding="5" CornerRadius="5" BorderColor="LightGray">
+                        <ScrollView>
+                            <Label FontSize="Micro"
+                                   Text="{Binding PersonalInformationCollectionAgreement}" IsEnabled="{Binding IsEnabledControl}"
+                                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                        </ScrollView>
+                    </Frame>
+
+                    <StackLayout Grid.Row="4" Margin="0,10,0,0" Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding AgreementIsToggled}" IsEnabled="{Binding IsEnabledControl}" />
+                        <Label VerticalOptions="Center" Style="{DynamicResource Label_Black_ModernJoin}"
+                           Text="전체 동의 (이용약관 동의, 개인정보 수집 및 이용 동의)"/>
+                    </StackLayout>
+                </Grid>
+
+                <Frame Grid.Row="1" Grid.Column="1" VerticalOptions="End" Margin="0,10,0,10" Padding="0" CornerRadius="5">
+                    <Button Text="다음" Command="{Binding AgreementNextCommand}" IsEnabled="{Binding IsEnabledControl}" Style="{DynamicResource Button_ModernJoin}" />
+                </Frame>
+            </Grid>
+
+            <Label Text="{Binding AppName,StringFormat='Copyright ⓒ {0} All Rights Reserved.'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_Micro_ModernJoin}" Margin="0,0,0,10" />
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage>
+        <ScrollView>
+            <StackLayout>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,5,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Column="0">
+                        <Label Text="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_ModernJoin}" Margin="0,0,0,0" />
+                        <Label Text="약관동의" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_ModernJoin}" Margin="0,0,0,0" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1">
+                        <Label Text="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Red" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,0,0,0" />
+                        <Label Text="정보입력" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Red" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,0,0,0" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2">
+                        <Label Text="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_ModernJoin}" Margin="0,0,0,0" />
+                        <Label Text="이메일 인증" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_ModernJoin}" Margin="0,0,0,0" />
+                    </StackLayout>
+                </Grid>
+
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Frame Grid.Column="0" Grid.ColumnSpan="3" Padding="0.1" BackgroundColor="Gray" Opacity="0.5"/>
+                    <Label Grid.Column="1" Text="●" TextColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,0,0,0" />
+                </Grid>
+
+                <Grid VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="1">
+                        <Label Text="이메일" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,15,0,0" />
+                        <Frame Margin="0" Padding="0" CornerRadius="5">
+                            <Entry Placeholder="Email" Keyboard="Email" ClearButtonVisibility="WhileEditing"
+                               Text="{Binding Email}" IsEnabled="{Binding IsEnabledControl}" Style="{DynamicResource Entry_ModernJoin}" />
+                        </Frame>
+
+                        <Label Text="이메일 확인" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,10,0,0" />
+                        <Frame Margin="0" Padding="0" CornerRadius="5">
+                            <Entry Placeholder="Re Email" Keyboard="Email" ClearButtonVisibility="WhileEditing"
+                               Text="{Binding ReEmail}" IsEnabled="{Binding IsEnabledControl}" Style="{DynamicResource Entry_ModernJoin}"/>
+                        </Frame>
+
+                        <Label Text="비밀번호" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,10,0,0" />
+                        <Frame Margin="0" Padding="0" CornerRadius="5">
+                            <Entry Placeholder="Password" IsPassword="True" ClearButtonVisibility="WhileEditing"
+                               Text="{Binding AccessNumber}" IsEnabled="{Binding IsEnabledControl}" Style="{DynamicResource Entry_ModernJoin}"/>
+                        </Frame>
+
+                        <Label Text="비밀번호 확인" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,10,0,0" />
+                        <Frame Margin="0" Padding="0" CornerRadius="5">
+                            <Entry Placeholder="Re Password" IsPassword="True" ClearButtonVisibility="WhileEditing"
+                               Text="{Binding ReAccessNumber}" IsEnabled="{Binding IsEnabledControl}" Style="{DynamicResource Entry_ModernJoin}"/>
+                        </Frame>
+
+                        <Label Text="닉네임" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,10,0,0" />
+                        <Frame Margin="0" Padding="0" CornerRadius="5">
+                            <Entry Placeholder="Nickname" ClearButtonVisibility="WhileEditing"
+                               Text="{Binding Nickname}" IsEnabled="{Binding IsEnabledControl}" Style="{DynamicResource Entry_ModernJoin}"/>
+                        </Frame>
+
+                        <Label Text="추천ID" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Style="{DynamicResource Label_Black_ModernJoin}" Margin="0,10,0,0" />
+                        <Frame Margin="0" Padding="0" CornerRadius="5">
+                            <Entry Placeholder="추천ID" ClearButtonVisibility="WhileEditing"
+                               Text="{Binding Referral}" IsEnabled="{Binding IsEnabledControl}" Style="{DynamicResource Entry_ModernJoin}"/>
+                        </Frame>
+                        <!--<Button Grid.Column="2" Grid.Row="0"
+                            Text="Back"
+                            Command="{Binding BackCommand}" IsEnabled="{Binding IsEnabledControl}" Style="{DynamicResource Button_ModernJoin}" />-->
+                    </StackLayout>
+
+                    <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="End" Margin="5,20,5,5" Padding="0" CornerRadius="5">
+                        <Button Text="가입" Command="{Binding JoinCommand}" IsEnabled="{Binding IsEnabledControl}" Style="{DynamicResource Button_ModernJoin}" />
+                    </Frame>
+                    <!--<controls:AdsBannerControl AdUnitId="ca-app-pub-1533168241290971/3724025077"/>-->
+                </Grid>
+
+                <Frame Padding="5" Margin="5" BackgroundColor="LightGray">
+                    <StackLayout>
+                        <Label Text="○ 입력된 정보는 약관에 따라 고객님의 동의 없이는 공개 또는 제3자에게 제공되지 않습니다." HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Style="{DynamicResource Label_Micro_ModernJoin}" Margin="0" />
+                        <Label Text="○ 계정을 타인에게 제공하여 계정이 범죄에 악용되는 경우 수사기관(검찰,경찰 등)의 수사 및 법적인 책임을 질 수 있습니다." HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Style="{DynamicResource Label_Micro_ModernJoin}" Margin="0" />
+                        <Label Text="○ 부정한 방법으로 회원가입 시 통보없이 가입니 취소 될 수 있습니다." HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Style="{DynamicResource Label_Micro_ModernJoin}" Margin="0" />
+                    </StackLayout>
+                </Frame>
+
+                <Label Text="{Binding AppName,StringFormat='Copyright ⓒ {0} All Rights Reserved.'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{DynamicResource Label_Micro_ModernJoin}" Margin="0,10,0,10" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+</CarouselPage>
